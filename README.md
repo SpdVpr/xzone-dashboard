@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard Prodejen
 
-## Getting Started
+Manažerský dashboard pro správu prodejen.
 
-First, run the development server:
+## Přihlášení do aplikace
+
+Pro přihlášení do aplikace můžete použít následující testovací účty:
+
+| Email | Heslo | Role |
+|-------|-------|------|
+| jan.novak@example.com | libovolné (min. 4 znaky) | admin |
+| petra.svobodova@example.com | libovolné (min. 4 znaky) | manager |
+| martin.dvorak@example.com | libovolné (min. 4 znaky) | manager |
+| lucie.cerna@example.com | libovolné (min. 4 znaky) | manager |
+
+## Řešení problémů s přihlášením na Vercel
+
+Pokud máte problémy s přihlášením na Vercel, je potřeba správně nastavit proměnné prostředí:
+
+1. Přejděte na [Vercel Dashboard](https://vercel.com/dashboard)
+2. Vyberte váš projekt (xzone-dashboard)
+3. Klikněte na "Settings" > "Environment Variables"
+4. Ujistěte se, že máte nastavené následující proměnné:
+   - `NEXTAUTH_SECRET`: Můžete použít stejnou hodnotu jako v lokálním prostředí nebo vygenerovat novou
+   - `NEXTAUTH_URL`: **Toto je klíčové** - musí být nastaveno na URL vaší Vercel aplikace (např. `https://xzone-dashboard.vercel.app`)
+
+5. Po aktualizaci proměnných prostředí klikněte na "Deployments" a pak na "Redeploy" u poslední verze, aby se změny projevily
+
+## Vývoj
+
+### Instalace závislostí
+
+```bash
+npm install
+```
+
+### Spuštění vývojového serveru
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Aplikace bude dostupná na [http://localhost:3000](http://localhost:3000).
