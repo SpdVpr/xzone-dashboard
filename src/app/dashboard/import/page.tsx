@@ -64,7 +64,13 @@ export default function ImportPage() {
       )}
 
       <div className="mb-8">
-        <VisitorImport onImport={handleImport} />
+        {isLoading ? (
+          <div className="flex justify-center items-center py-10">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+          </div>
+        ) : (
+          <VisitorImport onImport={handleImport} />
+        )}
       </div>
 
       <div className="bg-white shadow rounded-lg p-6">
