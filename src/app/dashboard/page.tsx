@@ -1,18 +1,15 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useSession } from 'next-auth/react';
 import { FiDollarSign, FiShoppingCart, FiUsers, FiPercent, FiClock } from 'react-icons/fi';
 import DateRangeFilter from '@/components/ui/DateRangeFilter';
 import StatCard from '@/components/ui/StatCard';
 import BarChart from '@/components/dashboard/BarChart';
-import LineChart from '@/components/dashboard/LineChart';
 import PieChart from '@/components/dashboard/PieChart';
 import { FilterOptions, DashboardData, StoreLocation } from '@/lib/types';
 import { formatCurrency, formatNumber, formatPercentage } from '@/lib/utils/format';
 
 export default function DashboardPage() {
-  const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);

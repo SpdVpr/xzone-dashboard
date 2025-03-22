@@ -7,7 +7,7 @@ import {
   createStoreSummary,
   calculateHourlySales
 } from '@/lib/utils/statistics';
-import { StoreLocation, FilterOptions, DashboardData } from '@/lib/types';
+import { StoreLocation, FilterOptions, DashboardData, StoreSummary } from '@/lib/types';
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     const storeLocations: StoreLocation[] = ['Brno', 'Praha - OC Lužiny', 'Praha - Centrála'];
     
     // Vytvoření souhrnných dat pro každou prodejnu
-    const storeData = {} as Record<StoreLocation, any>;
+    const storeData = {} as Record<StoreLocation, StoreSummary>;
     
     storeLocations.forEach(location => {
       storeData[location] = createStoreSummary(
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     );
     
     const totalTransactions = Object.values(storeData).reduce(
-      (sum, store: any) => sum + store.transactionCount,
+      (sum, store: StoreSummary) => sum + store.transactionCount,
       0
     );
     

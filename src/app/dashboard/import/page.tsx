@@ -7,14 +7,14 @@ import { VisitorData } from '@/lib/types';
 
 export default function ImportPage() {
   const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
   const handleImport = async (data: VisitorData[]) => {
     if (data.length === 0) return;
 
-    setIsSubmitting(true);
+    setIsLoading(true);
     setError(null);
     setSuccess(null);
 
@@ -43,7 +43,7 @@ export default function ImportPage() {
       console.error('Error importing visitor data:', error);
       setError('Došlo k chybě při importu dat. Zkuste to prosím znovu.');
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   };
 
@@ -85,7 +85,7 @@ export default function ImportPage() {
             </li>
           </ul>
           <p>
-            Pro usnadnění můžete stáhnout šablonu CSV souboru kliknutím na tlačítko "Stáhnout šablonu".
+            Pro usnadnění můžete stáhnout šablonu CSV souboru kliknutím na tlačítko &quot;Stáhnout šablonu&quot;.
           </p>
           <p className="mt-4">
             <strong>Poznámka:</strong> V reálném nasazení by tato data mohla být importována automaticky z externího systému pro počítání návštěvníků.

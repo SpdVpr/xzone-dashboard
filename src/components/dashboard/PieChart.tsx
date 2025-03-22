@@ -14,7 +14,7 @@ import { formatCurrency, formatPercentage } from '@/lib/utils/format';
 interface DataPoint {
   name: string;
   value: number;
-  [key: string]: any;
+  [key: string]: string | number | boolean | null | undefined;
 }
 
 interface PieChartProps {
@@ -60,7 +60,16 @@ export default function PieChart({
     return null;
   };
 
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }: any) => {
+  interface LabelProps {
+    cx: number;
+    cy: number;
+    midAngle: number;
+    innerRadius: number;
+    outerRadius: number;
+    percent: number;
+  }
+
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: LabelProps) => {
     if (!showPercentage) return null;
     
     const RADIAN = Math.PI / 180;

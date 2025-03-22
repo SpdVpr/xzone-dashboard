@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 import { 
   FiHome, 
   FiBarChart2, 
-  FiUsers, 
   FiFileText, 
   FiSettings, 
   FiMenu, 

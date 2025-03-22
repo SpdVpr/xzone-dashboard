@@ -13,14 +13,8 @@ import {
 } from 'recharts';
 import { formatCurrency } from '@/lib/utils/format';
 
-interface DataPoint {
-  name: string;
-  value: number;
-  [key: string]: any;
-}
-
 interface BarChartProps {
-  data: DataPoint[] | any[];
+  data: Array<Record<string, string | number>>;
   title: string;
   dataKey: string;
   xAxisDataKey?: string;

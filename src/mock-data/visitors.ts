@@ -8,11 +8,6 @@ function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Funkce pro náhodný výběr z pole
-function getRandomItem<T>(array: T[]): T {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
 // Funkce pro generování dat o návštěvnosti pro jeden den
 function generateVisitorDataForDay(date: Date): VisitorData[] {
   return storeLocations.map(storeLocation => {

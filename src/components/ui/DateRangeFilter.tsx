@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FilterOptions, TransactionType } from '@/lib/types';
 import { getDateRangeFromTimeRange } from '@/lib/utils/date';
 
@@ -25,8 +25,8 @@ export default function DateRangeFilter({ onChange, initialFilter }: DateRangeFi
     setEndDate(formattedToday);
   }, []);
   
-  // Nastavení časového rozsahu
-  useEffect(() => {
+  // Memoizovaná funkce pro vytvoření a odeslání filtru
+  const updateFilter = useCallback(() => {
     if (timeRange === 'custom' && (!startDate || !endDate)) {
       return; // Neodesílat filtr, pokud nejsou vyplněna vlastní data
     }
@@ -57,8 +57,12 @@ export default function DateRangeFilter({ onChange, initialFilter }: DateRangeFi
     };
     
     onChange(filter);
-    // Odstraněno 'onChange' z dependency array, aby se předešlo nekonečné smyčce
-  }, [timeRange, startDate, endDate, initialFilter?.storeLocation, transactionType]);
+  }, [timeRange, startDate, endDate, initialFilter?.storeLocation, transactionType, onChange]);
+  
+  // Nastavení časového rozsahu
+  useEffect(() => {
+    updateFilter();
+  }, [updateFilter]);
   
   return (
     <div className="bg-white shadow rounded-lg p-4 mb-6">

@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 import { FiDollarSign, FiShoppingCart, FiUsers, FiPercent, FiClock } from 'react-icons/fi';
 import DateRangeFilter from '@/components/ui/DateRangeFilter';
 import StatCard from '@/components/ui/StatCard';
-import LineChart from '@/components/dashboard/LineChart';
 import PieChart from '@/components/dashboard/PieChart';
 import BarChart from '@/components/dashboard/BarChart';
 import ProductTable from '@/components/dashboard/ProductTable';
@@ -19,12 +18,6 @@ const slugToStore: Record<string, StoreLocation> = {
   'praha-centrala': 'Praha - Centrála'
 };
 
-// Mapování názvů prodejen na URL slugy
-const storeToSlug: Record<StoreLocation, string> = {
-  'Brno': 'brno',
-  'Praha - OC Lužiny': 'praha-luziny',
-  'Praha - Centrála': 'praha-centrala'
-};
 
 export default function StorePage() {
   const params = useParams();

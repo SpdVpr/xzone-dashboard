@@ -17,7 +17,7 @@ import { formatDate } from '@/lib/utils/date';
 interface DataPoint {
   date: string;
   value: number;
-  [key: string]: any;
+  [key: string]: string | number | boolean | null | undefined;
 }
 
 interface LineChartProps {
